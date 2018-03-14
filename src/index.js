@@ -100,4 +100,4 @@ module.exports = function count(s, pairs) {
 
     console.log("final count = " + count);
     return count % 1000000007;
-}
+};
