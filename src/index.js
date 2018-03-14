@@ -1,15 +1,4 @@
 module.exports = function count(s, pairs) {
-    function nResult(pairs) {
-        var n = 1;
-        for (i = 0; i < pairs.length; i++) {
-            // var pairsPow = (pairs[i][0] ** pairs[i][1]);
-            var pairsPow = powByMod(pairs[i][0], pairs[i][1], 1000000007);
-            n *= pairsPow;
-            n %= 1000000007;
-        }
-        return n;
-    }
-
     function powByMod(base, exponent, modulus) {
         if ((base < 1) || (exponent < 0) || (modulus < 1)) {
             return ("invalid values sent to pow()");
@@ -24,6 +13,17 @@ module.exports = function count(s, pairs) {
         }
         // console.log("powResult by mod = " + result);
         return (result);
+    }
+
+    function nResult(pairs) {
+        var n = 1;
+        for (i = 0; i < pairs.length; i++) {
+            // var pairsPow = (pairs[i][0] ** pairs[i][1]);
+            var pairsPow = powByMod(pairs[i][0], pairs[i][1], 1000000007);
+            n *= pairsPow;
+            n %= 1000000007;
+        }
+        return n;
     }
 
     function isCoPrimeRegular(a, b) {
@@ -71,9 +71,9 @@ module.exports = function count(s, pairs) {
         var factor = 1;
         while (true) {
             if (a == b && a != 1)
-                if (a == 0)
-                    throw 'isCoPrimeBinaryShift(0, 0)';
-                else {
+                if (a == 0) {
+                    // throw 'isCoPrimeBinaryShift(0, 0)';
+                } else {
                     // console.log("1 >> false");
                     return false;
                     // return factor * a;
@@ -112,14 +112,13 @@ module.exports = function count(s, pairs) {
                 factor <<= 1;
                 a >>= 1;
                 b >>= 1;
-            } else if (!(a & 1))
+            } else if (!(a & 1)) {
                 a >>= 1;
-            else if (!(b & 1))
+            } else if (!(b & 1)) {
                 b >>= 1;
-            else if (b > a)
+            } else if (b > a) {
                 b = (b - a) >> 1;
-            else
-                a = (a - b) >> 1;
+            } else { a = (a - b) >> 1; }
         }
     }
 
