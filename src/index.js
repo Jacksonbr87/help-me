@@ -72,7 +72,7 @@ module.exports = function count(s, pairs) {
         while (true) {
             if (a == b && a != 1)
                 if (a == 0)
-                    throw 'isCoPrimeBinaryShift(0, 0)'
+                    throw 'isCoPrimeBinaryShift(0, 0)';
                 else {
                     // console.log("1 >> false");
                     return false;
