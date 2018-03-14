@@ -7,8 +7,7 @@ module.exports = function count(s, pairs) {
             n *= pairsPow;
         }
         return n;
-    };
-
+    }
 
     function powByMod(base, exponent, modulus) {
         if ((base < 1) || (exponent < 0) || (modulus < 1)) {
@@ -24,8 +23,7 @@ module.exports = function count(s, pairs) {
         }
         // console.log("powResult by mod = " + result);
         return (result);
-    };
-
+    }
 
     function isCoPrimeRegular(a, b) {
         var num;
@@ -41,7 +39,6 @@ module.exports = function count(s, pairs) {
         // console.log(false);
         return false;
     }
-
 
     function isCoPrimeEuklid(a, b) {
         if (a == 0 || b == 0) {
@@ -65,7 +62,6 @@ module.exports = function count(s, pairs) {
         return isCoPrimeEuklid(a, b - a);
     }
 
-
     let sArray = s.split('').reverse();
     let nValue = nResult(pairs);
     let totalTrue = true;
@@ -80,8 +76,8 @@ module.exports = function count(s, pairs) {
 
         for (let j = 0; j < sArray.length; j++) {
             // console.log("sArray[" + j + "] = " + sArray[j]);
-            let isPrime = isCoPrimeRegular(k + j, nValue);
-            // let isPrime = isCoPrimeEuklid(k + j, nValue);
+            // let isPrime = isCoPrimeRegular(k + j, nValue);
+            let isPrime = isCoPrimeEuklid(k + j, nValue);
 
             if (!(sArray[j] == 1 && isPrime === true || sArray[j] == 0 && isPrime === false && k > 0)) {
                 // console.log("break");
